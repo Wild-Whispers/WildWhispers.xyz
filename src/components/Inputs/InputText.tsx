@@ -1,9 +1,10 @@
 "use client";
 
-export default function InputRadio({ ...props }: & React.InputHTMLAttributes<HTMLInputElement>) {
+export default function InputText({ ...props }: & React.InputHTMLAttributes<HTMLInputElement>) {
     return (
         <input
             className="
+                w-full
                 p-1
 
                 outline-none
@@ -14,7 +15,7 @@ export default function InputRadio({ ...props }: & React.InputHTMLAttributes<HTM
                 text-md
                 rounded-sm
             "
-            type="radio"
+            type="text"
             {...props}
         />
     );

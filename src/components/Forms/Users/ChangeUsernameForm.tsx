@@ -1,20 +1,18 @@
 "use client";
 
-import { ChangeUsernameAction } from "@/_Actions/Account/ChangeUsernameAction";
 import { useActionState, useEffect, useState } from "react";
-import FormSectionCol from "./FormSectionCol";
-import InputPasswordMain from "../Inputs/InputPasswordMain";
-import InputTextMain from "../Inputs/InputTextMain";
-import FormSectionRow from "./FormSectionRow";
-import FormRawSubmitButton from "../Buttons/FormRawSubmitButton";
-import ErrorMessage from "../Messages/ErrorMessage";
-import SuccessMessage from "../Messages/SuccessMessage";
 import { useRouter } from "next/navigation";
-import { Admin } from "@/_Interfaces/Users/Admin";
-import { Teacher } from "@/_Interfaces/Users/Teacher";
-import { Student } from "@/_Interfaces/Users/Student";
+import { ChangeUsernameAction } from "@/_Actions/Users/ChangeUsernameAction";
+import { User } from "@/_Interfaces/Users/User";
+import ErrorMessage from "@/components/Messages/ErrorMessage";
+import SuccessMessage from "@/components/Messages/SuccessMessage";
+import Col from "@/components/Col";
+import InputTextMain from "@/components/Inputs/InputText";
+import InputPasswordMain from "@/components/Inputs/InputPassword";
+import Row from "@/components/Row";
+import FormSubmitButton from "@/components/Buttons/FormSubmitButton";
 
-export default function ChangeUsernameForm({ user, visible }: { user: Admin | Teacher | Student, visible: boolean }) {
+export default function ChangeUsernameForm({ user, visible }: { user: User, visible: boolean }) {
     const [changeUsernameState, action] = useActionState(ChangeUsernameAction, {
         success: false
     });
@@ -46,15 +44,15 @@ export default function ChangeUsernameForm({ user, visible }: { user: Admin | Te
                 success && <SuccessMessage description={success} />
             }
 
-            <FormSectionCol>
+            <Col>
                 <input type="hidden" name="uid" value={user.uid} />
-                <InputTextMain label="New Desired Username" name="newUsername" placeholder="JohnDoe" required />
-                <InputPasswordMain label="Verify Your Password" name="password" required />
-            </FormSectionCol>
+                <InputTextMain name="newUsername" placeholder="JohnDoe" required />
+                <InputPasswordMain name="password" required />
+            </Col>
 
-            <FormSectionRow classes="pt-2 pb-2">
-                <FormRawSubmitButton>Change Username</FormRawSubmitButton>
-            </FormSectionRow>
+            <Row classes="pt-2 pb-2">
+                <FormSubmitButton>Change Username</FormSubmitButton>
+            </Row>
         </form>
     );
 }

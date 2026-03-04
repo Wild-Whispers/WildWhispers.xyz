@@ -1,18 +1,10 @@
 "use server";
 
-import { UserTypes } from "@/_Enums/UserTypes";
-import { ActionReturnBase } from "@/_Interfaces/ActionReturnBase";
-import { UserCookie } from "../SigninAction";
-import { cookies } from "next/headers";
-import { changeUserPassword } from "@/lib/database/users/changeUserPassword";
-import { setLastSignin } from "@/lib/database/statistics/setLastSignin";
-import { Student } from "@/_Interfaces/Users/Student";
-import { Teacher } from "@/_Interfaces/Users/Teacher";
-import { Admin } from "@/_Interfaces/Users/Admin";
+import { BasicResult } from "@/_Interfaces/BasicResult";
 
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-export async function ChangePasswordAction(prevState: any, data: FormData): Promise<ActionReturnBase> {
-    const uid = data.get("uid") as string;
+export async function ChangePasswordAction(prevState: any, data: FormData): Promise<BasicResult> {
+    /*const uid = data.get("uid") as string;
     const newPassword = data.get("newPassword") as string;
     const password = data.get("oldPassword") as string;
 
@@ -50,11 +42,11 @@ export async function ChangePasswordAction(prevState: any, data: FormData): Prom
     if (!setSigninStatus) return {
         success: false,
         msg: "Something went wrong signing you in. If the problem persists, please contact an administrator."
-    };
+    };*/
 
     return {
         success: true,
         msg: "You have successfully changed your password! Please wait a moment...",
-        data: userData
+        data: null
     };
 }

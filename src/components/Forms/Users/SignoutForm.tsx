@@ -1,14 +1,14 @@
 "use client";
 
-import FormSubmitButton from "../Buttons/FormSubmitButton";
-import FormSectionCol from "./FormSectionCol";
-import FormSectionRow from "./FormSectionRow";
 import { useActionState, useEffect, useState } from "react";
-import ErrorMessage from "../Messages/ErrorMessage";
 import { useRouter } from "next/navigation";
-import FormActionButton from "../Buttons/FormActionButton";
-import { SignoutAction } from "@/_Actions/SignoutAction";
-import SuccessMessage from "../Messages/SuccessMessage";
+import { SignoutAction } from "@/_Actions/Users/SignoutAction";
+import Col from "@/components/Col";
+import Row from "@/components/Row";
+import ErrorMessage from "@/components/Messages/ErrorMessage";
+import SuccessMessage from "@/components/Messages/SuccessMessage";
+import FormSubmitButton from "@/components/Buttons/FormSubmitButton";
+import FormActionButton from "@/components/Buttons/FormActionButton";
 
 export default function SignoutForm() {
     const [serverState, action] = useActionState(SignoutAction, {
@@ -28,7 +28,7 @@ export default function SignoutForm() {
 
     return (
         <form action={action}>
-            <FormSectionCol classes="justify-center items-center">
+            <Col classes="justify-center items-center">
 
                 {
                     error && <ErrorMessage description={error} />
@@ -38,12 +38,12 @@ export default function SignoutForm() {
                     success && <SuccessMessage description="You have been successfully signed out. Please wait..." />
                 }
 
-                <FormSectionRow classes="justify-center items-center">
+                <Row classes="justify-center items-center">
                     <FormSubmitButton>Yes</FormSubmitButton>
                     <FormActionButton onClick={() => router.back()}>No, take me back</FormActionButton>
-                </FormSectionRow>
+                </Row>
 
-            </FormSectionCol>
+            </Col>
         </form>
     );
 }

@@ -1,19 +1,17 @@
 "use client";
 
 import { useActionState, useEffect, useState } from "react";
-import FormSectionCol from "./FormSectionCol";
-import InputPasswordMain from "../Inputs/InputPasswordMain";
-import FormSectionRow from "./FormSectionRow";
-import FormRawSubmitButton from "../Buttons/FormRawSubmitButton";
-import ErrorMessage from "../Messages/ErrorMessage";
-import SuccessMessage from "../Messages/SuccessMessage";
-import { ChangePasswordAction } from "@/_Actions/Account/ChangePasswordAction";
 import { useRouter } from "next/navigation";
-import { Admin } from "@/_Interfaces/Users/Admin";
-import { Teacher } from "@/_Interfaces/Users/Teacher";
-import { Student } from "@/_Interfaces/Users/Student";
+import { ChangePasswordAction } from "@/_Actions/Users/ChangePasswordAction";
+import { User } from "@/_Interfaces/Users/User";
+import ErrorMessage from "@/components/Messages/ErrorMessage";
+import SuccessMessage from "@/components/Messages/SuccessMessage";
+import Col from "@/components/Col";
+import InputPasswordMain from "@/components/Inputs/InputPassword";
+import Row from "@/components/Row";
+import FormSubmitButton from "@/components/Buttons/FormSubmitButton";
 
-export default function ChangePasswordForm({ user, visible }: { user: Admin | Teacher | Student, visible: boolean }) {
+export default function ChangePasswordForm({ user, visible }: { user: User, visible: boolean }) {
     const [changePasswordState, action] = useActionState(ChangePasswordAction, {
         success: false
     });
@@ -45,15 +43,15 @@ export default function ChangePasswordForm({ user, visible }: { user: Admin | Te
                 success && <SuccessMessage description={success} />
             }
 
-            <FormSectionCol>
+            <Col>
                 <input type="hidden" name="uid" value={user.uid} />
-                <InputPasswordMain label="Enter your old password" name="oldPassword" required />
-                <InputPasswordMain label="Enter your new desired password" name="newPassword" required />
-            </FormSectionCol>
+                <InputPasswordMain name="oldPassword" required />
+                <InputPasswordMain name="newPassword" required />
+            </Col>
             
-            <FormSectionRow classes="pt-2 pb-2">
-                <FormRawSubmitButton>Change Password</FormRawSubmitButton>
-            </FormSectionRow>
+            <Row classes="pt-2 pb-2">
+                <FormSubmitButton>Change Password</FormSubmitButton>
+            </Row>
         </form>
     );
 }

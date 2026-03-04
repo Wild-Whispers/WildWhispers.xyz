@@ -1,17 +1,12 @@
 "use server";
 
-import { UserTypes } from "@/_Enums/UserTypes";
-import { ActionReturnBase } from "@/_Interfaces/ActionReturnBase";
-import { UserCookie } from "../SigninAction";
 import { cookies } from "next/headers";
 import { changeUserUsername } from "@/lib/database/users/changeUserUsername";
-import { Student } from "@/_Interfaces/Users/Student";
-import { Teacher } from "@/_Interfaces/Users/Teacher";
-import { Admin } from "@/_Interfaces/Users/Admin";
+import { BasicResult } from "@/_Interfaces/BasicResult";
 
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-export async function ChangeUsernameAction(prevState: any, data: FormData): Promise<ActionReturnBase> {
-    const uid = data.get("uid") as string;
+export async function ChangeUsernameAction(prevState: any, data: FormData): Promise<BasicResult> {
+    /*const uid = data.get("uid") as string;
     const newUsername = data.get("newUsername") as string;
     const password = data.get("password") as string;
 
@@ -41,11 +36,11 @@ export async function ChangeUsernameAction(prevState: any, data: FormData): Prom
         sameSite: isDev ? "lax" : "strict",
         maxAge: 60 * 60 * 24 * 0.5, // 12 hours
         path: "/",
-    });
+    });*/
 
     return {
         success: true,
         msg: "You have successfully changed your username! Please wait a moment...",
-        data: userData
+        data: null
     };
 }

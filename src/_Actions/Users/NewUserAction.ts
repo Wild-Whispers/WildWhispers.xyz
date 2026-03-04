@@ -1,26 +1,23 @@
 "use server";
 
-import { PersonPrefixes } from "@/_Enums/PersonPrefixes";
-import { HashPass } from "@/_Helpers/Auth/HashPass";
-import { ActionReturnBase } from "@/_Interfaces/ActionReturnBase";
-import { Admin } from "@/_Interfaces/Users/Admin";
+import { BasicResult } from "@/_Interfaces/BasicResult";
 import { deleteAdmin } from "@/lib/database/admins/deleteAdmin";
 import { newAdmin } from "@/lib/database/admins/newAdmin";
 
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-export async function NewUserAction(prevState: any, pendingUsers: Array<Admin>): Promise<ActionReturnBase> {
-    const results = await Promise.all(pendingUsers.map(async user => {
+export async function NewUserAction(prevState: any, data: FormData): Promise<BasicResult> {
+    /*const results = await Promise.all(pendingUsers.map(async user => {
         // Verify that password is a string
         if (typeof user.password !== "string" || typeof user.repeatedPassword !== "string") return {
             success: false,
             msg: "Password must be a string! This is probably an uncaught bug."
-        } as ActionReturnBase;
+        } as BasicResult;
 
         // Verify password matches and hash
         if (user.password !== user.repeatedPassword) return {
             success: false,
             msg: "Passwords do not match!"
-        } as ActionReturnBase;
+        } as BasicResult;
 
         // Normalize the user
         const normalizedUser: Admin = {
@@ -43,12 +40,12 @@ export async function NewUserAction(prevState: any, pendingUsers: Array<Admin>):
         if (!uploadResult) return {
             success: false,
             msg: `Could not upload admin '${normalizedUser.username}'!`,
-        } as ActionReturnBase;
+        } as BasicResult;
 
         return {
             success: true,
             msg: "Successfully collected normalized users!",
-        } as ActionReturnBase;
+        } as BasicResult;
     }));
 
     // Check if any were invalid
@@ -61,5 +58,11 @@ export async function NewUserAction(prevState: any, pendingUsers: Array<Admin>):
         return invalidResult;
     }
 
-    return results[0];
+    return results[0];*/
+
+    return {
+        success: true,
+        msg: "",
+        data: null
+    };
 }

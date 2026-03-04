@@ -1,11 +1,11 @@
 "use server";
 
-import { ActionReturnBase } from "@/_Interfaces/ActionReturnBase";
-import { PendingUploadFile } from "@/_Interfaces/PendingUploadFile";
+import { BasicResult } from "@/_Interfaces/BasicResult";
+import { PendingUploadFile } from "@/_Interfaces/Media/PendingUploadFile";
 import { mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
-export async function UploadImageAction(pendingFiles: Array<PendingUploadFile>): Promise<ActionReturnBase> {
+export async function UploadImageAction(pendingFiles: Array<PendingUploadFile>): Promise<BasicResult> {
     if (!pendingFiles || pendingFiles.length === 0) return {
         success: false,
         msg: "No files were passed to the server action."

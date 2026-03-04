@@ -1,17 +1,15 @@
 "use client";
 
-import FormResetButton from "../Buttons/FormResetButton";
-import FormSubmitButton from "../Buttons/FormSubmitButton";
-import InputTextMain from "../Inputs/InputTextMain";
-import FormSectionCol from "./FormSectionCol";
-import FormSectionRow from "./FormSectionRow";
 import { useActionState, useEffect, useState } from "react";
-import ErrorMessage from "../Messages/ErrorMessage";
 import { useRouter } from "next/navigation";
-import InputDropdown from "../Inputs/InputDropdown";
-import { UserTypes } from "@/_Enums/UserTypes";
-import { SigninAction } from "@/_Actions/SigninAction";
-import InputPasswordMain from "../Inputs/InputPasswordMain";
+import { SigninAction } from "@/_Actions/Users/SigninAction";
+import Col from "@/components/Col";
+import Row from "@/components/Row";
+import InputTextMain from "@/components/Inputs/InputText";
+import InputPasswordMain from "@/components/Inputs/InputPassword";
+import FormResetButton from "@/components/Buttons/FormResetButton";
+import FormSubmitButton from "@/components/Buttons/FormSubmitButton";
+import ErrorMessage from "@/components/Messages/ErrorMessage";
 
 export default function SigninForm() {
     const [serverState, action] = useActionState(SigninAction, {
@@ -31,46 +29,31 @@ export default function SigninForm() {
 
                 return () => clearTimeout(timer);
             }
-
-            if (serverState.data.type === UserTypes.SUPER_ADMIN || serverState.data.type === UserTypes.ADMIN) router.push("/data/dashboard");
-            if (serverState.data.type === UserTypes.TEACHER || serverState.data.type === UserTypes.STUDENT) router.push("/data/dashboard/sections/owned");
         } else setError(serverState.msg!);
     }, [serverState, router]);
 
     return (
         <form action={action} className="flex flex-col items-center w-full">
-            <FormSectionCol classes="max-w-1/2">
+            <Col classes="max-w-1/2">
 
                 {
                     error && <ErrorMessage description={error} />
                 }
 
-                <FormSectionCol>
-                    <InputDropdown
-                        label="User Type"
-                        name="type"
-                        required
-                    >
-                        <option value={UserTypes.STUDENT}>{UserTypes.STUDENT}</option>
-                        <option value={UserTypes.TEACHER}>{UserTypes.TEACHER}</option>
-                        <option value={UserTypes.ADMIN}>{UserTypes.ADMIN}</option>
-                    </InputDropdown>
-                </FormSectionCol>
+                <Col>
+                    <InputTextMain name="username" placeholder="JohnDoe" required />
+                </Col>
 
-                <FormSectionCol>
-                    <InputTextMain label="Username" name="username" placeholder="JohnDoe" required />
-                </FormSectionCol>
+                <Col>
+                    <InputPasswordMain name="password" required />
+                </Col>
 
-                <FormSectionCol>
-                    <InputPasswordMain label="Password" name="password" required />
-                </FormSectionCol>
-
-                <FormSectionRow>
+                <Row>
                     <FormResetButton />
                     <FormSubmitButton>Sign In</FormSubmitButton>
-                </FormSectionRow>
+                </Row>
 
-            </FormSectionCol>
+            </Col>
         </form>
     );
 }

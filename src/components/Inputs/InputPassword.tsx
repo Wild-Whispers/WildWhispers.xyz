@@ -1,8 +1,10 @@
-export default function InputTextInline({ ...props }: & React.InputHTMLAttributes<HTMLInputElement>) {
+"use client";
+
+export default function InputPassword({ ...props }: & React.InputHTMLAttributes<HTMLInputElement>) {
     return (
         <input
             className="
-                min-w-10
+                w-full
                 p-1
 
                 outline-none
@@ -13,7 +15,7 @@ export default function InputTextInline({ ...props }: & React.InputHTMLAttribute
                 text-md
                 rounded-sm
             "
-            type="text"
+            type="password"
             {...props}
         />
     );

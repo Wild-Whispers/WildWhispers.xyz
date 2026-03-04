@@ -1,21 +1,16 @@
 "use server";
 
-import { UserTypes } from "@/_Enums/UserTypes";
-import { VerifyPass } from "@/_Helpers/Auth/VerifyPass";
-import { ActionReturnBase } from "@/_Interfaces/ActionReturnBase";
+import { BasicResult } from "@/_Interfaces/BasicResult";
 import { fetchAdminByUsername } from "@/lib/database/admins/fetchAdminByUsername";
 import { fetchStudentByUsername } from "@/lib/database/students/fetchStudentByUsername";
 import { fetchTeacherByUsername } from "@/lib/database/teachers/fetchTeacherByUsername";
 import { fetchLastSignin } from "@/lib/database/statistics/fetchLastSignin";
 import { setLastSignin } from "@/lib/database/statistics/setLastSignin";
 import { cookies } from "next/headers";
-import { Student } from "@/_Interfaces/Users/Student";
-import { Teacher } from "@/_Interfaces/Users/Teacher";
-import { Admin } from "@/_Interfaces/Users/Admin";
 
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-export async function SigninAction(prevState: any, data: FormData): Promise<ActionReturnBase & { requiresPasswordReset?: boolean }> {
-    const username = data.get("username") as string;
+export async function SigninAction(prevState: any, data: FormData): Promise<BasicResult & { requiresPasswordReset?: boolean }> {
+    /*const username = data.get("username") as string;
     const password = data.get("password") as string;
     const type = data.get("type") as UserTypes;
 
@@ -91,10 +86,10 @@ export async function SigninAction(prevState: any, data: FormData): Promise<Acti
     if (!setSigninStatus) return {
         success: false,
         msg: "Something went wrong signing you in. If the problem persists, please contact an administrator."
-    };
+    };*/
 
     return {
         success: true,
-        data: userData
+        data: null
     };
 }

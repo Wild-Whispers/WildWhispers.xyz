@@ -1,14 +1,13 @@
 "use client";
 
-import { UserCookie } from "@/_Actions/SigninAction";
-import { FetchClientCookie } from "@/_Helpers/FetchClientCookie";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import SignoutForm from "./SignoutForm";
+import { fetchClientCookie } from "@/lib/auth/cookies/fetchClientCookie";
 
 export default function SignoutFormProvider() {
     const router = useRouter();
-    const userData: UserCookie | null = FetchClientCookie("user");
+    const userData = fetchClientCookie("user");
 
     useEffect(() => {
         if (!userData || !userData.data) router.push("/data/account/signin");

@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes, ReactNode } from "react";
 
-export default function FormSubmitButton({ children, onClick, ...props }: { children: ReactNode } & ButtonHTMLAttributes<HTMLButtonElement>) {
+export default function FormSubmitButton({ children, ...props }: { children: ReactNode } & ButtonHTMLAttributes<HTMLButtonElement>) {
     return (
         <button
             type="submit"
@@ -22,12 +22,6 @@ export default function FormSubmitButton({ children, onClick, ...props }: { chil
                 rounded-sm
                 cursor-pointer
             "
-            onClick={(e) => {
-                if (onClick) {
-                    e.preventDefault();
-                    onClick(e);
-                }
-            }}
             {...props}
         >
             {children}
