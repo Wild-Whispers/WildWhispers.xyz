@@ -28,7 +28,7 @@ export default function SignoutForm() {
 
     return (
         <form action={action}>
-            <Col classes="justify-center items-center">
+            <Col className="justify-center items-center">
 
                 {
                     error && <ErrorMessage description={error} />
@@ -38,7 +38,7 @@ export default function SignoutForm() {
                     success && <SuccessMessage description="You have been successfully signed out. Please wait..." />
                 }
 
-                <Row classes="justify-center items-center">
+                <Row className="justify-center items-center">
                     <FormSubmitButton>Yes</FormSubmitButton>
                     <FormActionButton onClick={() => router.back()}>No, take me back</FormActionButton>
                 </Row>

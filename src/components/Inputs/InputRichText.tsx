@@ -68,11 +68,11 @@ export default function InputRichText({ label, onUpdate }: { label: ReactNode, o
     if (!editor) return null;
 
     return (
-        <Col classes="w-full p-1.5 border-1 border-slate-50/20 rounded-sm gap-2">
+        <Col className="w-full p-1.5 border-1 border-slate-50/20 rounded-sm gap-2">
 
             <div className="text-md">{label}</div>
 
-            <Col classes="p-1.5 flex-wrap bg-slate-600 rounded-sm">
+            <Col className="p-1.5 flex-wrap bg-slate-600 rounded-sm">
                 <Row>
                     <FormatButton 
                         onClick={() => editor.chain().focus().toggleBold().run()} 
@@ -98,7 +98,7 @@ export default function InputRichText({ label, onUpdate }: { label: ReactNode, o
             </Col>
 
             <Col
-                classes="
+                className="
                     w-full
                     min-h-[100px]
                     p-1

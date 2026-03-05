@@ -3,7 +3,7 @@ import Col from "../Col";
 export default function InformationMessage({ title, description }: { title?: string, description: string }) {
     return (
         <Col
-            classes="
+            className="
                 w-full
                 p-2
                 bg-cyan-400/30

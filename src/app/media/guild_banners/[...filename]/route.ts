@@ -7,7 +7,10 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ file
     const { filename } = await params;
 
     try {
-        const localPath = join("/uploaded_files", "guild_banners", ...filename);
+        const baseDir = process.env.NODE_ENV === "production" ?
+            "/uploaded_files" :
+            join(process.cwd(), "uploaded_files");
+        const localPath = join(baseDir, "guild_banners", ...filename);
 
         // Ensure file exists
         if (!existsSync(localPath)) return NextResponse.json({ error: "Guild banner not found" }, { status: 404 });

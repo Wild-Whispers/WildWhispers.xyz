@@ -1,6 +1,6 @@
 "use client";
 
-export default function InputTextarea({ classes, ...props }: { classes?: string } & React.InputHTMLAttributes<HTMLTextAreaElement>) {
+export default function InputTextarea({ rows, className, ...props }: { rows?: number, className?: string } & React.InputHTMLAttributes<HTMLTextAreaElement>) {
     return (
         <textarea
             className={`
@@ -9,9 +9,6 @@ export default function InputTextarea({ classes, ...props }: { classes?: string 
 
                 text-md
 
-                bg-white
-                text-black
-
                 outline-none
                 border-1
                 border-slate-50/20
@@ -19,8 +16,9 @@ export default function InputTextarea({ classes, ...props }: { classes?: string 
 
                 rounded-sm
 
-                ${classes}
+                ${className}
             `}
+            rows={rows ?? 2}
             {...props}
         ></textarea>
     );

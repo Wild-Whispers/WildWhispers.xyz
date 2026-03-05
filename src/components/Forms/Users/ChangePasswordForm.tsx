@@ -49,7 +49,7 @@ export default function ChangePasswordForm({ user, visible }: { user: User, visi
                 <InputPasswordMain name="newPassword" required />
             </Col>
             
-            <Row classes="pt-2 pb-2">
+            <Row className="pt-2 pb-2">
                 <FormSubmitButton>Change Password</FormSubmitButton>
             </Row>
         </form>

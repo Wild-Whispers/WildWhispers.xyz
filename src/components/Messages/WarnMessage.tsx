@@ -3,7 +3,7 @@ import Col from "../Col";
 export default function WarnMessage({ title, description }: { title?: string, description: string }) {
     return (
         <Col
-            classes="
+            className="
                 w-full
                 p-2
                 bg-amber-400/30

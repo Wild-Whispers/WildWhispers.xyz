@@ -3,6 +3,7 @@
 import { ReactNode } from "react";
 import "./globals.css";
 import GuildsList from "@/components/GuildsList/GuildsList";
+import Row from "@/components/Row";
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
     return (
@@ -21,9 +22,11 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
                 max-w-screen
                 max-h-screen
             ">
-                <GuildsList />
+                <Row>
+                    <GuildsList />
 
-                {children}
+                    {children}
+                </Row>
             </body>
         </html>
     );

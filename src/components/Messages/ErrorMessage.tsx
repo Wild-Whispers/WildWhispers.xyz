@@ -3,7 +3,7 @@ import Col from "../Col";
 export default function ErrorMessage({ title, description }: { title?: string, description: string }) {
     return (
         <Col
-            classes="
+            className="
                 w-full
                 p-2
                 bg-red-400/30

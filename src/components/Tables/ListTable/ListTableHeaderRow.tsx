@@ -6,7 +6,7 @@ import { ReactNode } from "react";
 export default function ListTableHeaderRow({ children }: { children: ReactNode }) {
     return (
         <Row
-            classes="
+            className="
                 items-center
                 p-1
 

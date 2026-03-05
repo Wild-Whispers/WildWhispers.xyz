@@ -11,10 +11,10 @@ export default function CollapsibleSection({ label, children }: { label: string,
     const handleExpand = () => setOpen((prev) => !prev);
 
     return (
-        <Col classes="w-full bg-slate-800 rounded-md">
+        <Col className="w-full bg-slate-800 rounded-md">
             <Row
                 onClick={handleExpand}
-                classes="
+                className="
                     w-full
                     justify-between
                     items-center
@@ -37,7 +37,7 @@ export default function CollapsibleSection({ label, children }: { label: string,
             </Row>
 
             <Col
-                classes={`
+                className={`
                     overflow-hidden
                     transition-all
                     duration-500
@@ -49,7 +49,7 @@ export default function CollapsibleSection({ label, children }: { label: string,
                 `}
             >
                 <Col
-                    classes="
+                    className="
                         w-full
                         p-1
                     "

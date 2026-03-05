@@ -7,8 +7,7 @@ export interface Guild {
     createdAt: number,
     iconFileName: string,
     bannerFileName: string,
-    bio: string,
+    bio?: string,
     description: string,
     members: Array<User["uid"]>,
-
 }

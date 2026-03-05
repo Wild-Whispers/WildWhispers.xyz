@@ -34,7 +34,7 @@ export default function SigninForm() {
 
     return (
         <form action={action} className="flex flex-col items-center w-full">
-            <Col classes="max-w-1/2">
+            <Col className="max-w-1/2">
 
                 {
                     error && <ErrorMessage description={error} />

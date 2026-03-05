@@ -50,7 +50,7 @@ export default function ChangeUsernameForm({ user, visible }: { user: User, visi
                 <InputPasswordMain name="password" required />
             </Col>
 
-            <Row classes="pt-2 pb-2">
+            <Row className="pt-2 pb-2">
                 <FormSubmitButton>Change Username</FormSubmitButton>
             </Row>
         </form>

@@ -3,7 +3,7 @@ import Col from "../Col";
 export default function SuccessMessage({ title, description }: { title?: string, description: string }) {
     return (
         <Col
-            classes="
+            className="
                 w-full
                 p-2
                 bg-lime-400/30

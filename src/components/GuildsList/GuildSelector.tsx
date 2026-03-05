@@ -6,8 +6,6 @@ import Link from "next/link";
 
 export default function GuildSelector({ guildName, guildID, guildIconName }: { guildName: Guild["name"], guildID: Guild["gid"], guildIconName: Guild["iconFileName"] }) {
     const icon = `http://localhost:3000/media/guild_icons/${guildIconName}`;
-    
-    console.log("Icon:", icon);
 
     return (
         <Link href={`/guilds/${guildID}`} title={guildName}>
@@ -19,6 +17,12 @@ export default function GuildSelector({ guildName, guildID, guildIconName }: { g
                 className="
                     w-10
                     h-10
+
+                    bg-slate-950
+
+                    border-1
+                    border-fuchsia-900
+
                     rounded-full
                 "
             />
